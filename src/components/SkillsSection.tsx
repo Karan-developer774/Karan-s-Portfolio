@@ -1,10 +1,10 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
+import SectionHeading from "./SectionHeading";
 
 const skillCategories = [
   {
     category: "Frontend",
-    skills: ["JavaScript", "TypeScript", "React.js", "Next.js", "HTML", "CSS", "Tailwind CSS", "Bootstrap", "MUI"],
+    skills: ["JavaScript", "TypeScript", "React.js", "Next.js", "HTML/CSS", "Tailwind CSS", "Bootstrap", "MUI"],
   },
   {
     category: "Backend",
@@ -16,51 +16,37 @@ const skillCategories = [
   },
   {
     category: "Cloud & DevOps",
-    skills: ["AWS (EC2, S3, Amplify)", "Vercel", "Netlify", "Railway", "Git & GitHub", "CI/CD", "Docker"],
+    skills: ["AWS (EC2, S3, Amplify)", "Vercel", "Netlify", "Railway", "Git/GitHub", "CI/CD", "Docker"],
   },
   {
     category: "Tools",
-    skills: ["Cursor AI", "GitHub Copilot", "Figma", "Microservices", "Nodemailer", "ESLint", "Postman"],
+    skills: ["Cursor AI", "GitHub Copilot", "Figma", "Postman", "Nodemailer", "ESLint"],
   },
 ];
 
 const SkillsSection = () => {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <section id="skills" className="section-padding bg-secondary/30">
+    <section id="skills" className="section-padding bg-secondary/40">
       <div className="container mx-auto px-6">
-        <motion.h2
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="flex items-center gap-3 text-2xl md:text-3xl font-bold text-foreground mb-12"
-        >
-          <span className="font-mono text-primary text-lg md:text-xl">03.</span>
-          Skills & Technologies
-          <span className="h-px flex-1 bg-border ml-4" />
-        </motion.h2>
+        <SectionHeading number="03" title="Skills" />
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="max-w-3xl space-y-8">
           {skillCategories.map((cat, i) => (
             <motion.div
               key={cat.category}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="glass rounded-lg p-6 hover-lift"
+              transition={{ duration: 0.4, delay: i * 0.05 }}
             >
-              <h3 className="font-mono text-primary text-sm font-semibold mb-4 uppercase tracking-wider">
+              <h3 className="text-xs font-mono text-accent uppercase tracking-widest mb-3">
                 {cat.category}
               </h3>
               <div className="flex flex-wrap gap-2">
                 {cat.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="text-sm text-muted-foreground bg-secondary px-3 py-1.5 rounded-md border border-border/50 hover:text-primary hover:border-primary/30 transition-colors"
+                    className="text-sm text-foreground/80 bg-card border border-border px-3 py-1.5 rounded-lg hover:border-accent/30 transition-colors"
                   >
                     {skill}
                   </span>

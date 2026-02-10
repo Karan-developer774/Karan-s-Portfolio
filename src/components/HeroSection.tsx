@@ -1,88 +1,66 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Download } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Subtle grid bg */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{
-        backgroundImage: "radial-gradient(hsl(var(--primary)) 1px, transparent 1px)",
-        backgroundSize: "40px 40px",
-      }} />
-
-      {/* Glow orb */}
-      <div className="absolute top-1/4 -right-32 w-96 h-96 rounded-full bg-primary/5 blur-[120px]" />
-      <div className="absolute bottom-1/4 -left-32 w-72 h-72 rounded-full bg-primary/8 blur-[100px]" />
-
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-3xl">
-          <motion.p
+    <section className="min-h-screen flex items-center relative">
+      <div className="container mx-auto px-6">
+        <div className="max-w-2xl">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="font-mono text-primary mb-5 text-sm md:text-base"
+            transition={{ delay: 0.1, duration: 0.5 }}
+            className="flex items-center gap-3 mb-8"
           >
-            Hi, my name is
-          </motion.p>
+            <div className="h-px w-12 bg-accent" />
+            <span className="text-sm font-medium text-accent tracking-wide">Full Stack Developer</span>
+          </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35 }}
-            className="text-4xl sm:text-5xl md:text-7xl font-bold text-foreground leading-tight"
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="text-5xl sm:text-6xl md:text-7xl font-bold text-foreground tracking-tight leading-[1.1]"
           >
-            Karan Mourya.
+            Karan
+            <br />
+            Mourya
           </motion.h1>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="text-3xl sm:text-4xl md:text-6xl font-bold text-muted-foreground mt-2 leading-tight"
-          >
-            I build things for the web.
-          </motion.h2>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.65 }}
-            className="mt-6 text-muted-foreground max-w-lg text-base md:text-lg leading-relaxed"
+            transition={{ delay: 0.35, duration: 0.5 }}
+            className="mt-6 text-lg text-muted-foreground max-w-md leading-relaxed"
           >
-            Full Stack Developer with 2+ years of experience building
-            production-ready web applications — from e-commerce platforms to CRMs
-            and admin systems using{" "}
-            <span className="text-primary">MERN, Next.js & AWS</span>.
+            I build scalable web applications and secure systems with the MERN stack, Next.js, and AWS.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
-            className="mt-10 flex flex-wrap gap-4"
+            transition={{ delay: 0.5, duration: 0.5 }}
+            className="mt-8 flex items-center gap-4"
           >
             <a
               href="#projects"
-              className="font-mono text-sm border border-primary text-primary px-6 py-3 rounded hover:bg-primary/10 transition-colors"
+              className="text-sm font-medium bg-foreground text-background px-6 py-3 rounded-lg hover:opacity-90 transition-opacity"
             >
-              View Projects
+              View Work
             </a>
             <a
-              href="/Karan-Mourya-Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-sm bg-primary text-primary-foreground px-6 py-3 rounded hover:bg-primary/90 transition-colors flex items-center gap-2"
+              href="#contact"
+              className="text-sm font-medium border border-border text-foreground px-6 py-3 rounded-lg hover:bg-secondary transition-colors"
             >
-              <Download size={16} />
-              Resume
+              Contact
             </a>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-            className="mt-12 flex items-center gap-5"
+            transition={{ delay: 0.7, duration: 0.5 }}
+            className="mt-10 flex items-center gap-4"
           >
             {[
               { icon: Github, href: "https://github.com/karanmourya", label: "GitHub" },
@@ -94,10 +72,10 @@ const HeroSection = () => {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary hover:-translate-y-1 transition-all duration-200"
+                className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
                 aria-label={label}
               >
-                <Icon size={22} />
+                <Icon size={20} />
               </a>
             ))}
           </motion.div>
@@ -105,20 +83,17 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
+      <motion.a
+        href="#about"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        transition={{ delay: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-foreground transition-colors"
       >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-          className="w-5 h-8 border-2 border-muted-foreground/30 rounded-full flex items-start justify-center p-1"
-        >
-          <div className="w-1 h-2 bg-primary rounded-full" />
+        <motion.div animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 2 }}>
+          <ArrowDown size={20} />
         </motion.div>
-      </motion.div>
+      </motion.a>
     </section>
   );
 };
