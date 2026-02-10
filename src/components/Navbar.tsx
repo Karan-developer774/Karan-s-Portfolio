@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
+import Logo from "./Logo";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -31,11 +32,10 @@ const Navbar = () => {
         scrolled
           ? "bg-background/80 backdrop-blur-lg border-b border-border shadow-sm"
           : "bg-transparent"
-      }`}
-    >
+      }`}>
       <div className="container mx-auto flex items-center justify-between px-6 h-16">
-        <a href="#" className="text-lg font-bold tracking-tight text-foreground">
-          KM
+        <a href="#" className="flex items-center">
+          <Logo />
         </a>
 
         {/* Desktop */}
@@ -44,8 +44,7 @@ const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               {link.label}
             </a>
           ))}
@@ -53,19 +52,23 @@ const Navbar = () => {
           <button
             onClick={toggle}
             className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
-            aria-label="Toggle theme"
-          >
+            aria-label="Toggle theme">
             {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
           </button>
 
-          <a
+          <motion.a
             href="/Karan-Mourya-Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-medium bg-foreground text-background px-4 py-2 rounded-lg hover:opacity-90 transition-opacity"
-          >
-            Resume
-          </a>
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="group relative text-sm font-medium bg-gradient-to-r from-foreground to-accent text-background px-4 py-2 rounded-lg hover:shadow-lg hover:shadow-accent/25 transition-all duration-300 overflow-hidden">
+            <span className="relative z-10">Resume</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-accent to-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span className="text-background">Resume</span>
+            </span>
+          </motion.a>
         </div>
 
         {/* Mobile controls */}
@@ -73,15 +76,13 @@ const Navbar = () => {
           <button
             onClick={toggle}
             className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
-            aria-label="Toggle theme"
-          >
+            aria-label="Toggle theme">
             {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
           </button>
           <button
             className="p-2 text-foreground"
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-          >
+            aria-label="Toggle menu">
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
@@ -94,27 +95,30 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background/95 backdrop-blur-lg border-b border-border"
-          >
+            className="md:hidden bg-background/95 backdrop-blur-lg border-b border-border">
             <div className="flex flex-col items-center gap-5 py-6">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                   {link.label}
                 </a>
               ))}
-              <a
+              <motion.a
                 href="/Karan-Mourya-Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-medium bg-foreground text-background px-4 py-2 rounded-lg hover:opacity-90 transition-opacity"
-              >
-                Resume
-              </a>
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="group relative text-sm font-medium bg-gradient-to-r from-foreground to-accent text-background px-4 py-2 rounded-lg hover:shadow-lg hover:shadow-accent/25 transition-all duration-300 overflow-hidden">
+                <span className="relative z-10">Resume</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-accent to-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="text-background">Resume</span>
+                </span>
+              </motion.a>
             </div>
           </motion.div>
         )}

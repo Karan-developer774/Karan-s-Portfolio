@@ -17,31 +17,47 @@ const ContactSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="max-w-lg"
-        >
+          className="max-w-lg">
           <p className="text-muted-foreground leading-relaxed mb-8">
-            I'm currently looking for new opportunities. Whether you have a question,
-            a project idea, or just want to connect — feel free to reach out.
+            I'm currently looking for new opportunities. Whether you have a
+            question, a project idea, or just want to connect — feel free to
+            reach out.
           </p>
 
-          <a
+          <motion.a
             href="mailto:karanmouryakaran774@gmail.com"
-            className="inline-flex items-center gap-2 text-sm font-medium bg-foreground text-background px-6 py-3 rounded-lg hover:opacity-90 transition-opacity"
-          >
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="group relative inline-flex items-center gap-2 text-sm font-medium bg-gradient-to-r from-foreground to-accent text-background px-8 py-3.5 rounded-xl hover:shadow-lg hover:shadow-accent/25 transition-all duration-300 overflow-hidden">
             <Mail size={16} />
-            Get in Touch
-          </a>
+            <span className="relative z-10">Get in Touch</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-accent to-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <Mail size={16} />
+              <span className="text-background ml-2">Get in Touch</span>
+            </span>
+          </motion.a>
 
           <div className="mt-10 space-y-3">
             {[
-              { icon: Mail, label: "karanmouryakaran774@gmail.com", href: "mailto:karanmouryakaran774@gmail.com" },
+              {
+                icon: Mail,
+                label: "karanmouryakaran774@gmail.com",
+                href: "mailto:karanmouryakaran774@gmail.com",
+              },
               { icon: Phone, label: "6260245948", href: "tel:6260245948" },
               { icon: MapPin, label: "Bhopal, M.P.", href: undefined },
             ].map(({ icon: Icon, label, href }) => (
-              <div key={label} className="flex items-center gap-3 text-sm text-muted-foreground">
+              <div
+                key={label}
+                className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Icon size={16} className="shrink-0" />
                 {href ? (
-                  <a href={href} className="hover:text-foreground transition-colors">{label}</a>
+                  <a
+                    href={href}
+                    className="hover:text-foreground transition-colors">
+                    {label}
+                  </a>
                 ) : (
                   <span>{label}</span>
                 )}
@@ -51,21 +67,19 @@ const ContactSection = () => {
 
           <div className="mt-6 flex items-center gap-3">
             <a
-              href="https://github.com/karanmourya"
+              href="https://github.com/Karan-developer774"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
-              aria-label="GitHub"
-            >
+              aria-label="GitHub">
               <Github size={20} />
             </a>
             <a
-              href="https://linkedin.com/in/karanmourya"
+              href="https://linkedin.com/in/karan-mourya-81b11b233"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
-              aria-label="LinkedIn"
-            >
+              aria-label="LinkedIn">
               <Linkedin size={20} />
             </a>
           </div>

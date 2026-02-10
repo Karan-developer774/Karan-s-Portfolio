@@ -14,11 +14,12 @@ const ExperienceSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="border border-border rounded-xl p-6 md:p-8 bg-card"
-          >
+            className="border border-border rounded-xl p-6 md:p-8 bg-card">
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
               <div>
-                <h3 className="font-bold text-foreground">Full Stack Developer</h3>
+                <h3 className="font-bold text-foreground">
+                  Full Stack Developer
+                </h3>
                 <p className="text-sm text-accent font-medium mt-0.5">
                   Worldsoft IT Solution Pvt. Ltd.
                 </p>
@@ -37,7 +38,9 @@ const ExperienceSection = () => {
                 "Developed and integrated RESTful APIs",
                 "Collaborated with cross-functional teams to deliver scalable solutions",
               ].map((item, i) => (
-                <li key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                <li
+                  key={i}
+                  className="flex items-start gap-2.5 text-sm text-muted-foreground">
                   <span className="w-1 h-1 rounded-full bg-accent mt-2 shrink-0" />
                   {item}
                 </li>
@@ -51,11 +54,12 @@ const ExperienceSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="border border-border rounded-xl p-6 md:p-8 bg-card"
-          >
+            className="border border-border rounded-xl p-6 md:p-8 bg-card">
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
               <div>
-                <h3 className="font-bold text-foreground">B.Tech – Electronics & Communication</h3>
+                <h3 className="font-bold text-foreground">
+                  B.Tech – Electronics & Communication Engineering
+                </h3>
                 <p className="text-sm text-accent font-medium mt-0.5">
                   IES College of Technology, Bhopal
                 </p>
